@@ -206,6 +206,112 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Language Switcher
+let currentLang = localStorage.getItem('language') || 'ar';
+
+function switchLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('language', lang);
+    
+    const html = document.getElementById('htmlRoot');
+    const allElements = document.querySelectorAll('[data-ar], [data-en]');
+    
+    if (lang === 'en') {
+        html.setAttribute('dir', 'ltr');
+        html.setAttribute('lang', 'en');
+        document.title = 'Sanaa Comprehensive Construction Company - We Build Dreams';
+        
+        // Switch Bootstrap to LTR
+        let bootstrapLink = document.querySelector('link[href*="bootstrap"]');
+        if (bootstrapLink) {
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css';
+            newLink.id = 'bootstrap-css';
+            bootstrapLink.parentNode.replaceChild(newLink, bootstrapLink);
+        }
+        
+        allElements.forEach(element => {
+            if (element.hasAttribute('data-en')) {
+                const enText = element.getAttribute('data-en');
+                if (enText) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = enText;
+                    } else {
+                        element.textContent = enText;
+                    }
+                }
+            }
+        });
+        
+        // Update language switcher button
+        const langSwitch = document.getElementById('langSwitch');
+        if (langSwitch) {
+            langSwitch.setAttribute('data-lang', 'en');
+            const span = langSwitch.querySelector('span');
+            if (span) {
+                span.textContent = 'العربية';
+            }
+        }
+    } else {
+        html.setAttribute('dir', 'rtl');
+        html.setAttribute('lang', 'ar');
+        document.title = 'شركة صنعة الإعمار الشامل - نحن صناع الأحلام';
+        
+        // Switch Bootstrap to RTL
+        let bootstrapLink = document.querySelector('link[href*="bootstrap"]');
+        if (bootstrapLink) {
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css';
+            newLink.id = 'bootstrap-css';
+            bootstrapLink.parentNode.replaceChild(newLink, bootstrapLink);
+        }
+        
+        allElements.forEach(element => {
+            if (element.hasAttribute('data-ar')) {
+                const arText = element.getAttribute('data-ar');
+                if (arText) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = arText;
+                    } else {
+                        element.textContent = arText;
+                    }
+                }
+            }
+        });
+        
+        // Update language switcher button
+        const langSwitch = document.getElementById('langSwitch');
+        if (langSwitch) {
+            langSwitch.setAttribute('data-lang', 'ar');
+            const span = langSwitch.querySelector('span');
+            if (span) {
+                span.textContent = 'English';
+            }
+        }
+    }
+    
+    // Reinitialize AOS after language switch
+    setTimeout(() => {
+        AOS.refresh();
+    }, 100);
+}
+
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', function() {
+    switchLanguage(currentLang);
+    
+    // Language switcher button event
+    const langSwitch = document.getElementById('langSwitch');
+    if (langSwitch) {
+        langSwitch.addEventListener('click', function() {
+            const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            switchLanguage(newLang);
+        });
+    }
+});
+
 // Console message
 console.log('%cشركة صنعة الإعمار الشامل', 'color: #D4AF37; font-size: 20px; font-weight: bold;');
 console.log('%cنحن صناع الأحلام', 'color: #B8860B; font-size: 14px;');

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="htmlRoot">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,10 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Google Fonts - Arabic -->
+    <!-- Google Fonts - Arabic & English -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -28,7 +28,7 @@
         <div class="container">
             <a class="navbar-brand" href="#home">
                 <img src="logo_sanaa.png" alt="صنعة الإعمار" class="logo-img">
-                <span class="brand-text">صنعة الإعمار</span>
+                <span class="brand-text" data-ar="صنعة الإعمار" data-en="Sanaa Construction">صنعة الإعمار</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -36,19 +36,27 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">الرئيسية</a>
+                        <a class="nav-link" href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">عن الشركة</a>
+                        <a class="nav-link" href="#about" data-ar="عن الشركة" data-en="About">عن الشركة</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">خدماتنا</a>
+                        <a class="nav-link" href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#vision">رؤيتنا</a>
+                        <a class="nav-link" href="#projects" data-ar="مشاريعنا" data-en="Projects">مشاريعنا</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">اتصل بنا</a>
+                        <a class="nav-link" href="#vision" data-ar="رؤيتنا" data-en="Vision">رؤيتنا</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-ar="اتصل بنا" data-en="Contact">اتصل بنا</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-sm language-switcher" id="langSwitch" data-lang="ar">
+                            <i class="fas fa-language"></i> <span data-ar="English" data-en="العربية">English</span>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -62,16 +70,16 @@
             <div class="row align-items-center min-vh-100">
                 <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
                     <h1 class="hero-title mb-4">
-                        <span class="highlight">صنعة الإعمار</span><br>
-                        نحن صناع الأحلام
+                        <span class="highlight" data-ar="صنعة الإعمار" data-en="Sanaa Construction">صنعة الإعمار</span><br>
+                        <span data-ar="نحن صناع الأحلام" data-en="We Build Dreams">نحن صناع الأحلام</span>
                     </h1>
                     <p class="hero-subtitle mb-5">
-                        شركة ليبية رائدة في مجال الإعمار والمقاولات<br>
-                        نسعى جاهدين لتقديم ما هو أفضل بجودة ومهنية عالية
+                        <span data-ar="شركة ليبية رائدة في مجال الإعمار والمقاولات" data-en="A leading Libyan company in construction and contracting">شركة ليبية رائدة في مجال الإعمار والمقاولات</span><br>
+                        <span data-ar="نسعى جاهدين لتقديم ما هو أفضل بجودة ومهنية عالية" data-en="We strive to deliver the best with high quality and professionalism">نسعى جاهدين لتقديم ما هو أفضل بجودة ومهنية عالية</span>
                     </p>
                     <div class="hero-buttons">
-                        <a href="#services" class="btn btn-primary btn-lg me-3">خدماتنا</a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg">اتصل بنا</a>
+                        <a href="#services" class="btn btn-primary btn-lg me-3" data-ar="خدماتنا" data-en="Our Services">خدماتنا</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</a>
                     </div>
                 </div>
             </div>
@@ -87,18 +95,18 @@
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="section-header mb-4">
-                        <h2 class="section-title">عن الشركة</h2>
+                        <h2 class="section-title" data-ar="عن الشركة" data-en="About Us">عن الشركة</h2>
                         <div class="title-underline"></div>
                     </div>
                     <div class="about-content">
                         <p class="lead mb-4">
-                            <strong>شركة صنعة الإعمار الشامل</strong> شركة ليبية رائدة في مجال الإعمار والمقاولات تأسست سنة 2025 طبقاً للوائح القانون الليبي الخاص بالشركات.
+                            <strong data-ar="شركة صنعة الإعمار الشامل" data-en="Sanaa Comprehensive Construction Company">شركة صنعة الإعمار الشامل</strong> <span data-ar="شركة ليبية رائدة في مجال الإعمار والمقاولات تأسست سنة 2025 طبقاً للوائح القانون الليبي الخاص بالشركات." data-en="is a leading Libyan company in construction and contracting, established in 2025 according to Libyan company law regulations.">شركة ليبية رائدة في مجال الإعمار والمقاولات تأسست سنة 2025 طبقاً للوائح القانون الليبي الخاص بالشركات.</span>
                         </p>
                         <p class="mb-4">
-                            متخصصة في مجال المقاولات والإنشاء وأعمال التشطيب. نحن نسعى جاهدين لتقديم ما هو أفضل في مجال الإعمار بجودة ومهنية عالية، ونحرص على مواكبة كل ما هو جديد ومتطور في مجال المقاولات والإعمار والإنشاءات.
+                            <span data-ar="متخصصة في مجال المقاولات والإنشاء وأعمال التشطيب. نحن نسعى جاهدين لتقديم ما هو أفضل في مجال الإعمار بجودة ومهنية عالية، ونحرص على مواكبة كل ما هو جديد ومتطور في مجال المقاولات والإعمار والإنشاءات." data-en="We specialize in contracting, construction, and finishing works. We strive to deliver the best in construction with high quality and professionalism, and we are committed to keeping up with everything new and advanced in the field of contracting, construction, and building.">متخصصة في مجال المقاولات والإنشاء وأعمال التشطيب. نحن نسعى جاهدين لتقديم ما هو أفضل في مجال الإعمار بجودة ومهنية عالية، ونحرص على مواكبة كل ما هو جديد ومتطور في مجال المقاولات والإعمار والإنشاءات.</span>
                         </p>
                         <p>
-                            نحن نسعى دائماً لكي نكون الخيار الأول والأمثل للعملاء بما نتميز به من أفكار وخطط وتصاميم واستراتيجية عالية في العمل.
+                            <span data-ar="نحن نسعى دائماً لكي نكون الخيار الأول والأمثل للعملاء بما نتميز به من أفكار وخطط وتصاميم واستراتيجية عالية في العمل." data-en="We always strive to be the first and optimal choice for clients with our distinguished ideas, plans, designs, and high-level work strategy.">نحن نسعى دائماً لكي نكون الخيار الأول والأمثل للعملاء بما نتميز به من أفكار وخطط وتصاميم واستراتيجية عالية في العمل.</span>
                         </p>
                     </div>
                 </div>
@@ -119,9 +127,9 @@
             <div class="row">
                 <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
                     <div class="section-header">
-                        <h2 class="section-title">خدماتنا</h2>
+                        <h2 class="section-title" data-ar="خدماتنا" data-en="Our Services">خدماتنا</h2>
                         <div class="title-underline"></div>
-                        <p class="mt-4" style="color: var(--text-gray);">نقدم مجموعة شاملة من الخدمات في مجال الإعمار والمقاولات</p>
+                        <p class="mt-4" style="color: var(--text-gray);" data-ar="نقدم مجموعة شاملة من الخدمات في مجال الإعمار والمقاولات" data-en="We offer a comprehensive range of services in construction and contracting">نقدم مجموعة شاملة من الخدمات في مجال الإعمار والمقاولات</p>
                     </div>
                 </div>
             </div>
@@ -131,10 +139,8 @@
                         <div class="service-icon">
                             <i class="fas fa-hard-hat"></i>
                         </div>
-                        <h4 class="service-title">المقاولات العامة والإعمار</h4>
-                        <p class="service-description">
-                            نقدم خدمات المقاولات العامة والإعمار بأعلى معايير الجودة والاحترافية
-                        </p>
+                        <h4 class="service-title" data-ar="المقاولات العامة والإعمار" data-en="General Contracting & Construction">المقاولات العامة والإعمار</h4>
+                        <p class="service-description" data-ar="نقدم خدمات المقاولات العامة والإعمار بأعلى معايير الجودة والاحترافية" data-en="We provide general contracting and construction services with the highest standards of quality and professionalism">نقدم خدمات المقاولات العامة والإعمار بأعلى معايير الجودة والاحترافية</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
@@ -142,10 +148,8 @@
                         <div class="service-icon">
                             <i class="fas fa-drafting-compass"></i>
                         </div>
-                        <h4 class="service-title">التصميم والتنفيذ</h4>
-                        <p class="service-description">
-                            تصميم وتنفيذ المشاريع بأحدث التقنيات والأساليب المعمارية الحديثة
-                        </p>
+                        <h4 class="service-title" data-ar="التصميم والتنفيذ" data-en="Design & Implementation">التصميم والتنفيذ</h4>
+                        <p class="service-description" data-ar="تصميم وتنفيذ المشاريع بأحدث التقنيات والأساليب المعمارية الحديثة" data-en="Design and implementation of projects with the latest technologies and modern architectural methods">تصميم وتنفيذ المشاريع بأحدث التقنيات والأساليب المعمارية الحديثة</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
@@ -153,10 +157,8 @@
                         <div class="service-icon">
                             <i class="fas fa-road"></i>
                         </div>
-                        <h4 class="service-title">مشاريع البنية التحتية</h4>
-                        <p class="service-description">
-                            تنفيذ مشاريع البنية التحتية بكفاءة عالية وجودة ممتازة
-                        </p>
+                        <h4 class="service-title" data-ar="مشاريع البنية التحتية" data-en="Infrastructure Projects">مشاريع البنية التحتية</h4>
+                        <p class="service-description" data-ar="تنفيذ مشاريع البنية التحتية بكفاءة عالية وجودة ممتازة" data-en="Implementation of infrastructure projects with high efficiency and excellent quality">تنفيذ مشاريع البنية التحتية بكفاءة عالية وجودة ممتازة</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
@@ -164,10 +166,8 @@
                         <div class="service-icon">
                             <i class="fas fa-th"></i>
                         </div>
-                        <h4 class="service-title">مشاريع الرصف والأرضيات</h4>
-                        <p class="service-description">
-                            تنفيذ مشاريع الرصف والأرضيات بأحدث المواد والتقنيات
-                        </p>
+                        <h4 class="service-title" data-ar="مشاريع الرصف والأرضيات" data-en="Paving & Flooring Projects">مشاريع الرصف والأرضيات</h4>
+                        <p class="service-description" data-ar="تنفيذ مشاريع الرصف والأرضيات بأحدث المواد والتقنيات" data-en="Implementation of paving and flooring projects with the latest materials and technologies">تنفيذ مشاريع الرصف والأرضيات بأحدث المواد والتقنيات</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
@@ -175,10 +175,8 @@
                         <div class="service-icon">
                             <i class="fas fa-paint-roller"></i>
                         </div>
-                        <h4 class="service-title">أعمال التشطيب والديكورات</h4>
-                        <p class="service-description">
-                            جميع أعمال التشطيب والديكورات بأذواق عصرية ومتميزة
-                        </p>
+                        <h4 class="service-title" data-ar="أعمال التشطيب والديكورات" data-en="Finishing & Decoration Works">أعمال التشطيب والديكورات</h4>
+                        <p class="service-description" data-ar="جميع أعمال التشطيب والديكورات بأذواق عصرية ومتميزة" data-en="All finishing and decoration works with modern and distinguished tastes">جميع أعمال التشطيب والديكورات بأذواق عصرية ومتميزة</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
@@ -186,10 +184,103 @@
                         <div class="service-icon">
                             <i class="fas fa-tools"></i>
                         </div>
-                        <h4 class="service-title">خدمات متكاملة</h4>
-                        <p class="service-description">
-                            حلول متكاملة لجميع احتياجاتك في مجال الإعمار والبناء
-                        </p>
+                        <h4 class="service-title" data-ar="خدمات متكاملة" data-en="Integrated Services">خدمات متكاملة</h4>
+                        <p class="service-description" data-ar="حلول متكاملة لجميع احتياجاتك في مجال الإعمار والبناء" data-en="Integrated solutions for all your needs in construction and building">حلول متكاملة لجميع احتياجاتك في مجال الإعمار والبناء</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <div class="section-header">
+                        <h2 class="section-title" data-ar="مشاريعنا" data-en="Our Projects">مشاريعنا</h2>
+                        <div class="title-underline"></div>
+                        <p class="mt-4" style="color: var(--text-gray);" data-ar="نفخر بعرض مجموعة من مشاريعنا المتميزة" data-en="We are proud to showcase some of our distinguished projects">نفخر بعرض مجموعة من مشاريعنا المتميزة</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300?text=Project+1" alt="مشروع 1" class="img-fluid">
+                            <div class="project-overlay">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4 class="project-title" data-ar="مشروع البنية التحتية" data-en="Infrastructure Project">مشروع البنية التحتية</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300?text=Project+2" alt="مشروع 2" class="img-fluid">
+                            <div class="project-overlay">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4 class="project-title" data-ar="مشروع المباني السكنية" data-en="Residential Building Project">مشروع المباني السكنية</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300?text=Project+3" alt="مشروع 3" class="img-fluid">
+                            <div class="project-overlay">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4 class="project-title" data-ar="مشروع الطرق والرصف" data-en="Roads & Paving Project">مشروع الطرق والرصف</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300?text=Project+4" alt="مشروع 4" class="img-fluid">
+                            <div class="project-overlay">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4 class="project-title" data-ar="مشروع التشطيب والديكور" data-en="Finishing & Decoration Project">مشروع التشطيب والديكور</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300?text=Project+5" alt="مشروع 5" class="img-fluid">
+                            <div class="project-overlay">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4 class="project-title" data-ar="مشروع التجاري" data-en="Commercial Project">مشروع التجاري</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300?text=Project+6" alt="مشروع 6" class="img-fluid">
+                            <div class="project-overlay">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4 class="project-title" data-ar="مشروع التصميم المعماري" data-en="Architectural Design Project">مشروع التصميم المعماري</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -205,22 +296,22 @@
                         <div class="vision-icon mb-4">
                             <i class="fas fa-eye"></i>
                         </div>
-                        <h2 class="section-title text-center mb-4">رؤيتنا</h2>
+                        <h2 class="section-title text-center mb-4" data-ar="رؤيتنا" data-en="Our Vision">رؤيتنا</h2>
                         <div class="title-underline mx-auto mb-5"></div>
                         <p class="vision-text lead mb-4">
-                            نسعى لكي نكون دائماً في المستوى الأول لشركات المقاولات في الإعمار والإنشاءات ونؤمن بمبدأ المنافسة الشريفة لصالح الوطن والمواطن.
+                            <span data-ar="نسعى لكي نكون دائماً في المستوى الأول لشركات المقاولات في الإعمار والإنشاءات ونؤمن بمبدأ المنافسة الشريفة لصالح الوطن والمواطن." data-en="We strive to always be at the first level of construction and contracting companies, and we believe in the principle of fair competition for the benefit of the nation and the citizen.">نسعى لكي نكون دائماً في المستوى الأول لشركات المقاولات في الإعمار والإنشاءات ونؤمن بمبدأ المنافسة الشريفة لصالح الوطن والمواطن.</span>
                         </p>
                         <p class="vision-text">
-                            وبما نحمله من أفكار وطموحات وخبرات يجعلنا دائماً الخيار الأنسب والأفضل لكل العملاء.
+                            <span data-ar="وبما نحمله من أفكار وطموحات وخبرات يجعلنا دائماً الخيار الأنسب والأفضل لكل العملاء." data-en="With the ideas, ambitions, and expertise we carry, we are always the most suitable and best choice for all clients.">وبما نحمله من أفكار وطموحات وخبرات يجعلنا دائماً الخيار الأنسب والأفضل لكل العملاء.</span>
                         </p>
                         <div class="vision-quotes mt-5">
                             <div class="quote-item">
                                 <i class="fas fa-quote-right quote-icon"></i>
-                                <p class="quote-text">صنعة الإعمار ....... نحن صناع الأحلام</p>
+                                <p class="quote-text" data-ar="صنعة الإعمار ....... نحن صناع الأحلام" data-en="Sanaa Construction ....... We Build Dreams">صنعة الإعمار ....... نحن صناع الأحلام</p>
                             </div>
                             <div class="quote-item">
                                 <i class="fas fa-quote-right quote-icon"></i>
-                                <p class="quote-text">في صنعة الإعمار ......... نحن نهتم باحتياجاتك</p>
+                                <p class="quote-text" data-ar="في صنعة الإعمار ......... نحن نهتم باحتياجاتك" data-en="At Sanaa Construction ......... We Care About Your Needs">في صنعة الإعمار ......... نحن نهتم باحتياجاتك</p>
                             </div>
                         </div>
                     </div>
@@ -235,9 +326,9 @@
             <div class="row">
                 <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
                     <div class="section-header">
-                        <h2 class="section-title">اتصل بنا</h2>
+                        <h2 class="section-title" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</h2>
                         <div class="title-underline"></div>
-                        <p class="mt-4" style="color: var(--text-gray);">نحن هنا لخدمتك في أي وقت</p>
+                        <p class="mt-4" style="color: var(--text-gray);" data-ar="نحن هنا لخدمتك في أي وقت" data-en="We are here to serve you at any time">نحن هنا لخدمتك في أي وقت</p>
                     </div>
                 </div>
             </div>
@@ -249,7 +340,7 @@
                                 <div class="contact-icon">
                                     <i class="fas fa-phone"></i>
                                 </div>
-                                <h5 class="contact-title">الهاتف</h5>
+                                <h5 class="contact-title" data-ar="الهاتف" data-en="Phone">الهاتف</h5>
                                 <p class="contact-info">
                                     <a href="tel:0925008538">092 5008538</a><br>
                                     <a href="tel:0915956649">091 595 6649</a>
@@ -261,7 +352,7 @@
                                 <div class="contact-icon">
                                     <i class="fas fa-envelope"></i>
                                 </div>
-                                <h5 class="contact-title">البريد الإلكتروني</h5>
+                                <h5 class="contact-title" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</h5>
                                 <p class="contact-info">
                                     <a href="mailto:info@sanaa.ly">info@sanaa.ly</a>
                                 </p>
@@ -272,8 +363,8 @@
                                 <div class="contact-icon">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
-                                <h5 class="contact-title">الموقع</h5>
-                                <p class="contact-info">عرادة طرابلس - ليبيا</p>
+                                <h5 class="contact-title" data-ar="الموقع" data-en="Location">الموقع</h5>
+                                <p class="contact-info" data-ar="عرادة طرابلس - ليبيا" data-en="Arada, Tripoli - Libya">عرادة طرابلس - ليبيا</p>
                             </div>
                         </div>
                         <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
@@ -281,8 +372,8 @@
                                 <div class="contact-icon">
                                     <i class="fas fa-building"></i>
                                 </div>
-                                <h5 class="contact-title">السجل التجاري</h5>
-                                <p class="contact-info">تأسست سنة 2025</p>
+                                <h5 class="contact-title" data-ar="السجل التجاري" data-en="Commercial Register">السجل التجاري</h5>
+                                <p class="contact-info" data-ar="تأسست سنة 2025" data-en="Established in 2025">تأسست سنة 2025</p>
                             </div>
                         </div>
                     </div>
@@ -300,8 +391,8 @@
                         <img src="logo_sanaa.png" alt="صنعة الإعمار" class="footer-logo-img">
                     </div>
                     <p class="footer-text mb-3">
-                        <strong>شركة صنعة الإعمار الشامل</strong><br>
-                        نحن صناع الأحلام
+                        <strong data-ar="شركة صنعة الإعمار الشامل" data-en="Sanaa Comprehensive Construction Company">شركة صنعة الإعمار الشامل</strong><br>
+                        <span data-ar="نحن صناع الأحلام" data-en="We Build Dreams">نحن صناع الأحلام</span>
                     </p>
                     <div class="footer-social mb-3">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -310,7 +401,7 @@
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <p class="footer-copyright">
-                        &copy; 2025 شركة صنعة الإعمار الشامل. جميع الحقوق محفوظة.
+                        <span data-ar="&copy; 2025 شركة صنعة الإعمار الشامل. جميع الحقوق محفوظة." data-en="&copy; 2025 Sanaa Comprehensive Construction Company. All rights reserved.">&copy; 2025 شركة صنعة الإعمار الشامل. جميع الحقوق محفوظة.</span>
                     </p>
                 </div>
             </div>
