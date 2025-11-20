@@ -1,0 +1,913 @@
+/* ===================================
+   Global Styles
+   =================================== */
+:root {
+    --primary-gold: #B8860B;
+    --dark-gold: #8B6914;
+    --darker-gold: #6B4E0F;
+    --black: #000000;
+    --dark-black: #1a1a1a;
+    --light-gold: #D4AF37;
+    --bright-gold: #F4D03F;
+    --white: #ffffff;
+    --light-bg: #f8f9fa;
+    --lighter-bg: #ffffff;
+    --text-dark: #2c3e50;
+    --text-gray: #6c757d;
+    --text-light-gray: #95a5a6;
+    --border-light: #e9ecef;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.8;
+}
+
+/* ===================================
+   Navigation
+   =================================== */
+#mainNav {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid var(--border-light);
+}
+
+#mainNav.scrolled {
+    padding: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.99);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--black) !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0 2px 8px rgba(184, 134, 11, 0.3));
+}
+
+.brand-text {
+    background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-dark) !important;
+    font-weight: 600;
+    margin: 0 10px;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+    transition: all 0.3s ease;
+    transform: translateX(50%);
+    border-radius: 2px;
+}
+
+.navbar-nav .nav-link:hover::before,
+.navbar-nav .nav-link.active::before {
+    width: 80%;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-gold) !important;
+    background: rgba(184, 134, 11, 0.08);
+}
+
+.navbar-toggler {
+    border-color: var(--primary-gold);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(184, 134, 11, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(184, 134, 11, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    max-width: 80%;
+    max-height: 80%;
+    background-image: url('logo_sanaa.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.03;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--text-dark);
+    animation: titleFade 1s ease-out;
+}
+
+@keyframes titleFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title .highlight {
+    background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold), var(--primary-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: shimmer 3s ease infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-gray);
+    font-weight: 400;
+}
+
+.hero-buttons .btn {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-transform: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+    border: none;
+    color: var(--black);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--light-gold), var(--primary-gold));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(184, 134, 11, 0.5);
+    color: var(--black);
+}
+
+.btn-outline-light {
+    border: 2px solid var(--light-gold);
+    color: var(--light-gold);
+    background: transparent;
+}
+
+.btn-outline-light:hover {
+    background: var(--light-gold);
+    color: var(--black);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(184, 134, 11, 0.5);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+.scroll-indicator i {
+    font-size: 2rem;
+    color: var(--light-gold);
+    opacity: 0.7;
+}
+
+/* ===================================
+   Section Styles
+   =================================== */
+.section-padding {
+    padding: 100px 0;
+    position: relative;
+}
+
+.section-padding > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.section-header {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.title-underline {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+    margin: 0 auto;
+    border-radius: 2px;
+    position: relative;
+}
+
+.title-underline::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+}
+
+.bg-dark {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(184, 134, 11, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.bg-dark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    max-width: 70%;
+    max-height: 70%;
+    background-image: url('logo_sanaa.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.02;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-dark > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===================================
+   About Section
+   =================================== */
+#about {
+    position: relative;
+}
+
+#about::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    max-width: 60%;
+    max-height: 60%;
+    background-image: url('logo_sanaa.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.015;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#about > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.about-content {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+.about-content strong {
+    color: var(--primary-gold);
+    font-size: 1.3rem;
+}
+
+.about-image {
+    position: relative;
+    padding: 30px;
+}
+
+.image-placeholder {
+    background: linear-gradient(135deg, rgba(184, 134, 11, 0.05), rgba(212, 175, 55, 0.05));
+    border-radius: 20px;
+    padding: 80px 40px;
+    text-align: center;
+    box-shadow: 0 10px 50px rgba(184, 134, 11, 0.1);
+    border: 2px solid rgba(184, 134, 11, 0.2);
+    transition: all 0.3s ease;
+}
+
+.image-placeholder:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(184, 134, 11, 0.2);
+    border-color: var(--primary-gold);
+}
+
+.image-placeholder i {
+    color: var(--primary-gold);
+    opacity: 0.8;
+}
+
+/* ===================================
+   Services Section
+   =================================== */
+.service-card {
+    background: var(--white);
+    border: 2px solid var(--border-light);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    height: 100%;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(184, 134, 11, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-gold);
+    box-shadow: 0 15px 50px rgba(184, 134, 11, 0.2);
+    background: var(--white);
+}
+
+.service-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 25px;
+    background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 30px rgba(184, 134, 11, 0.25);
+    transition: all 0.4s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 40px rgba(184, 134, 11, 0.4);
+}
+
+.service-icon i {
+    font-size: 2.5rem;
+    color: var(--white);
+}
+
+.service-title {
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.service-description {
+    color: var(--text-gray);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* ===================================
+   Vision Section
+   =================================== */
+#vision {
+    position: relative;
+}
+
+#vision::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 550px;
+    max-width: 65%;
+    max-height: 65%;
+    background-image: url('logo_sanaa.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.012;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#vision > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.vision-card {
+    background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
+    border: 2px solid var(--border-light);
+    border-radius: 30px;
+    padding: 60px 50px;
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.vision-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(184, 134, 11, 0.03) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.vision-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.vision-icon {
+    text-align: center;
+}
+
+.vision-icon i {
+    font-size: 4rem;
+    color: var(--primary-gold);
+    opacity: 0.9;
+}
+
+.vision-text {
+    color: var(--text-gray);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.vision-quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.quote-item {
+    background: rgba(184, 134, 11, 0.05);
+    border-right: 4px solid var(--primary-gold);
+    padding: 25px 30px;
+    border-radius: 15px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.quote-item:hover {
+    background: rgba(184, 134, 11, 0.1);
+    transform: translateX(-10px);
+    box-shadow: 0 5px 20px rgba(184, 134, 11, 0.15);
+}
+
+.quote-icon {
+    color: var(--primary-gold);
+    font-size: 1.5rem;
+    margin-left: 15px;
+    opacity: 0.8;
+}
+
+.quote-text {
+    color: var(--text-dark);
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-style: italic;
+    margin: 0;
+}
+
+/* ===================================
+   Contact Section
+   =================================== */
+.contact-card {
+    background: var(--white);
+    border: 2px solid var(--border-light);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    height: 100%;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.05), transparent);
+    transition: all 0.5s ease;
+}
+
+.contact-card:hover::before {
+    left: 100%;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-gold);
+    box-shadow: 0 15px 50px rgba(184, 134, 11, 0.2);
+}
+
+.contact-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 30px rgba(184, 134, 11, 0.25);
+    transition: all 0.4s ease;
+}
+
+.contact-card:hover .contact-icon {
+    transform: scale(1.15) rotate(360deg);
+}
+
+.contact-icon i {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.contact-title {
+    color: var(--text-dark);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.contact-info {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.contact-info a {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--primary-gold);
+    text-decoration: underline;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+.footer {
+    background: linear-gradient(135deg, #f8f9fa 0%, var(--white) 100%);
+    padding: 60px 0 30px;
+    border-top: 2px solid var(--border-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 50% 0%, rgba(184, 134, 11, 0.02) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.footer::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    max-width: 50%;
+    max-height: 50%;
+    background-image: url('logo_sanaa.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.015;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.footer > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-logo-img {
+    height: 80px;
+    width: auto;
+    filter: drop-shadow(0 2px 10px rgba(184, 134, 11, 0.3));
+    transition: all 0.3s ease;
+}
+
+.footer-logo-img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 15px rgba(184, 134, 11, 0.5));
+}
+
+.footer-text {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+.footer-text strong {
+    color: var(--primary-gold);
+    font-size: 1.3rem;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(184, 134, 11, 0.25);
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
+    color: var(--white);
+    background: linear-gradient(135deg, var(--light-gold), var(--primary-gold));
+}
+
+.footer-copyright {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-top: 30px;
+    opacity: 0.7;
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .vision-card {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-padding {
+        padding: 60px 0;
+    }
+    
+    .service-card,
+    .contact-card {
+        margin-bottom: 20px;
+    }
+    
+    .vision-quotes {
+        gap: 20px;
+    }
+    
+    .quote-text {
+        font-size: 1.1rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .logo-img {
+        height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-buttons .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .vision-card {
+        padding: 30px 20px;
+    }
+    
+    .quote-text {
+        font-size: 1rem;
+    }
+}
+
+/* ===================================
+   Smooth Scroll
+   =================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===================================
+   Loading Animation
+   =================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
