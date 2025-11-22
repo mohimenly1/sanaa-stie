@@ -60,12 +60,31 @@ window.addEventListener('scroll', function() {
     });
 });
 
-// Parallax effect for hero section
+// Parallax effect for hero section (disabled on mobile)
 window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero-section');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    // Only apply parallax on desktop screens (width > 768px)
+    if (window.innerWidth > 768) {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero-section');
+        if (hero) {
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    } else {
+        // On mobile, keep hero section fixed
+        const hero = document.querySelector('.hero-section');
+        if (hero) {
+            hero.style.transform = 'translateY(0)';
+        }
+    }
+});
+
+// Ensure hero section is fixed on mobile on page load
+window.addEventListener('resize', function() {
+    if (window.innerWidth <= 768) {
+        const hero = document.querySelector('.hero-section');
+        if (hero) {
+            hero.style.transform = 'translateY(0)';
+        }
     }
 });
 
@@ -292,6 +311,14 @@ function switchLanguage(lang) {
         }
     }
     
+    // Update gallery modal title if modal is open
+    if (typeof galleryModal !== 'undefined' && galleryModal && galleryModal._isShown) {
+        const modalTitle = document.getElementById('projectGalleryModalLabel');
+        if (modalTitle && typeof currentProjectIndex !== 'undefined' && projects && projects[currentProjectIndex]) {
+            modalTitle.textContent = projects[currentProjectIndex].title[lang];
+        }
+    }
+    
     // Reinitialize AOS after language switch
     setTimeout(() => {
         AOS.refresh();
@@ -310,6 +337,161 @@ document.addEventListener('DOMContentLoaded', function() {
             switchLanguage(newLang);
         });
     }
+});
+
+// Project Gallery Modal
+const projects = [
+    {
+        image: 'project_image/1.png',
+        title: {
+            ar: 'منتجع الهزم السياحي .. زليتن',
+            en: 'Al-Hazm Tourist Resort .. Zliten'
+        }
+    },
+    {
+        image: 'project_image/2.png',
+        title: {
+            ar: 'متحف السرايا ... طرابلس',
+            en: 'Al-Saraya Museum ... Tripoli'
+        }
+    },
+    {
+        image: 'project_image/3.png',
+        title: {
+            ar: 'شركة الصناعة الكهربائية ... بئر التوتة - طرابلس',
+            en: 'Electrical Industry Company ... Bir Al-Tuta - Tripoli'
+        }
+    },
+    {
+        image: 'project_image/4.png',
+        title: {
+            ar: 'نادي السلام ... الزاوية',
+            en: 'Al-Salam Club ... Al-Zawiya'
+        }
+    },
+    {
+        image: 'project_image/5.png',
+        title: {
+            ar: 'مدرسة المنار الكبرى الدولية ... مصراتة',
+            en: 'Al-Manar Al-Kubra International School ... Misrata'
+        }
+    },
+    {
+        image: 'project_image/6.png',
+        title: {
+            ar: '1500م جامع غرناطة .... سرت',
+            en: '1500m Granada Mosque .... Sirte'
+        }
+    }
+];
+
+let currentProjectIndex = 0;
+let galleryModal;
+
+// Open gallery modal when clicking on project card
+function initGallery() {
+    document.querySelectorAll('.project-card').forEach((card, index) => {
+        card.addEventListener('click', function() {
+            currentProjectIndex = index;
+            openGalleryModal(index);
+        });
+    });
+}
+
+function openGalleryModal(index) {
+    if (!galleryModal) {
+        const galleryModalElement = document.getElementById('projectGalleryModal');
+        if (galleryModalElement) {
+            galleryModal = new bootstrap.Modal(galleryModalElement, {
+                keyboard: true,
+                backdrop: true
+            });
+        }
+    }
+    
+    const project = projects[index];
+    const modalTitle = document.getElementById('projectGalleryModalLabel');
+    const modalImage = document.getElementById('galleryModalImage');
+    
+    if (!modalTitle || !modalImage) return;
+    
+    // Set title based on current language
+    const currentLang = localStorage.getItem('language') || 'ar';
+    modalTitle.textContent = project.title[currentLang];
+    modalTitle.setAttribute('data-ar', project.title.ar);
+    modalTitle.setAttribute('data-en', project.title.en);
+    
+    // Set image
+    modalImage.src = project.image;
+    modalImage.alt = project.title.ar;
+    
+    // Update navigation buttons
+    updateGalleryNav();
+    
+    // Show modal
+    if (galleryModal) {
+        galleryModal.show();
+    }
+}
+
+function updateGalleryNav() {
+    const prevBtn = document.getElementById('galleryPrev');
+    const nextBtn = document.getElementById('galleryNext');
+    
+    prevBtn.style.display = currentProjectIndex === 0 ? 'none' : 'flex';
+    nextBtn.style.display = currentProjectIndex === projects.length - 1 ? 'none' : 'flex';
+}
+
+// Navigation buttons
+document.getElementById('galleryPrev').addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentProjectIndex > 0) {
+        currentProjectIndex--;
+        openGalleryModal(currentProjectIndex);
+    }
+});
+
+document.getElementById('galleryNext').addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentProjectIndex < projects.length - 1) {
+        currentProjectIndex++;
+        openGalleryModal(currentProjectIndex);
+    }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (galleryModal && galleryModal._isShown) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            const isRTL = document.documentElement.dir === 'rtl';
+            const isNext = (isRTL && e.key === 'ArrowRight') || (!isRTL && e.key === 'ArrowLeft');
+            
+            if (isNext && currentProjectIndex < projects.length - 1) {
+                currentProjectIndex++;
+                openGalleryModal(currentProjectIndex);
+            } else if (!isNext && currentProjectIndex > 0) {
+                currentProjectIndex--;
+                openGalleryModal(currentProjectIndex);
+            }
+        } else if (e.key === 'Escape') {
+            galleryModal.hide();
+        }
+    }
+});
+
+// Initialize gallery on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize gallery modal
+    const galleryModalElement = document.getElementById('projectGalleryModal');
+    if (galleryModalElement) {
+        galleryModal = new bootstrap.Modal(galleryModalElement, {
+            keyboard: true,
+            backdrop: true
+        });
+    }
+    
+    // Initialize gallery click handlers
+    initGallery();
 });
 
 // Console message
